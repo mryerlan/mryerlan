@@ -73,9 +73,7 @@ func (this *SSHSession) createConnection(user, password, ipPort string) error {
 	LogDebug("<Test> Begin connect")
 	client, err := ssh.Dial("tcp", ipPort, &ssh.ClientConfig{
 		User: user,
-		Auth: []ssh.AuthMethod{
-			ssh.Password(password),
-		},
+		Auth: []ssh.noneAuth{},
 		HostKeyCallback: func(hostname string, remote net.Addr, key ssh.PublicKey) error {
 			return nil
 		},
